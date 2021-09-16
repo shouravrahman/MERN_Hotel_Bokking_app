@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -17,4 +19,42 @@ code {
 }
 .navbar-brand {
 	color: white !important;
+}
+.smallimg {
+	height: 200px;
+	max-width: 100% !important;
+	border-radius: 5px !important;
+}
+.bigimg {
+	height: 400px;
+	max-width: 100% !important;
+	border-radius: 5px !important;
+}
+p {
+	font-weight: 400 !important;
+}
+.modal-desc {
+	padding: 1.2rem;
+	color: black;
+	font-size: 1.2rem;
+}
+h1 {
+	font-size: 20px !important;
+	font-weight: 600 !important;
+	color: brown !important;
+}
+.btn {
+	background-color: black !important;
+	color: white !important;
+	box-shadow: none !important;
+}
+.bs {
+	box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px,
+		rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px,
+		rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px,
+		rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px,
+		rgb(255, 85, 85) 40px -40px;
+	margin-top: 20px !important;
+	border-radius: 5px !important;
+	padding: 30px !important;
 }
