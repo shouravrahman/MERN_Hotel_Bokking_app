@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Modal, Button, Carousel } from 'react-bootstrap'
 const Room = ({ room }) => {
 	const [show, setShow] = useState(false)
@@ -6,9 +7,9 @@ const Room = ({ room }) => {
 	const handleClose = () => setShow(false)
 	const handleShow = () => setShow(true)
 	return (
-		<div className='row bs my-3'>
-			<div className='col-md-4 me-5'>
-				<img src={room.imageurls[0]} alt={room.name} className='smallimg' />
+		<div className='row bs my-3  align-items-center'>
+			<div className='col-md-5 me-5'>
+				<img src={room.imageurls[0]} alt={room.name} className='smallimg ' />
 			</div>
 			<div className='col-md-7'>
 				<h1 className='mb-3'>{room.name}</h1>
@@ -24,6 +25,10 @@ const Room = ({ room }) => {
 				</p>
 
 				<div style={{ float: 'right' }}>
+					{/* //todo: pass a link */}
+					<Link to={`/book/${room._id}`}>
+						<button className='btn m-2'>Book Now</button>
+					</Link>
 					<button onClick={handleShow} className='btn'>
 						View Details
 					</button>

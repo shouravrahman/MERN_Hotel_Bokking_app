@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Room from '../components/Room'
+import Loader from '../components/Loader'
+import Error from '../components/Error'
 
 const Home = () => {
 	const [rooms, setRooms] = useState([])
@@ -26,13 +28,11 @@ const Home = () => {
 	}, [])
 
 	return (
-		<div className='container text-start'>
-			<div className='row justify-content-center mt-5'>
+		<div className='container text-right'>
+			<div className='row justify-content-center mt-5 '>
 				{loading ? (
-					<h1>Loading...</h1>
-				) : error ? (
-					<h1>Error</h1>
-				) : (
+					<Loader />
+				) : rooms.length > 1 ? (
 					rooms.map((room) => {
 						return (
 							<div className='col-md-9 my-3'>
@@ -40,6 +40,8 @@ const Home = () => {
 							</div>
 						)
 					})
+				) : (
+					<Error />
 				)}
 			</div>
 		</div>

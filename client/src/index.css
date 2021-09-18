@@ -11,8 +11,11 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+/* .align-right {
+	text-align: right !important;
+} */
 .navbar {
-	background-color: darkgrey !important;
+	background-color: black !important;
 }
 .nav-link {
 	color: white !important;
@@ -32,6 +35,11 @@ code {
 }
 p {
 	font-weight: 400 !important;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.dropdown-toggle {
+	border: none !important;
 }
 .modal-desc {
 	padding: 1.2rem;
@@ -41,20 +49,32 @@ p {
 h1 {
 	font-size: 20px !important;
 	font-weight: 600 !important;
-	color: brown !important;
+	color: rgba(32, 11, 11, 0.815) !important;
+	margin-top: 10px !important;
+	margin-bottom: 20px !important;
 }
 .btn {
 	background-color: black !important;
 	color: white !important;
 	box-shadow: none !important;
+	/* margin-top: 1rem !important; */
 }
 .bs {
-	box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px,
-		rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px,
-		rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px,
-		rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px,
-		rgb(255, 85, 85) 40px -40px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	margin-top: 20px !important;
 	border-radius: 5px !important;
 	padding: 30px !important;
+}
+input {
+	box-shadow: none !important;
+	margin-top: 10px !important;
+	border: 1px solid black !important;
+}
+h2 {
+	font-size: 30px !important;
+	text-align: center !important;
+	padding: 10px !important;
+	font-weight: bold !important;
+	margin-top: 10px !important;
+	margin-bottom: 20px !importants;
 }
