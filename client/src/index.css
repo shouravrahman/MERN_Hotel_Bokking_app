@@ -41,6 +41,9 @@ p {
 .dropdown-toggle {
 	border: none !important;
 }
+.dropdown-menu {
+	min-width: 8rem !important;
+}
 .modal-desc {
 	padding: 1.2rem;
 	color: black;

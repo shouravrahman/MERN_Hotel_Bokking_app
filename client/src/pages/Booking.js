@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Loader from '../components/Loader'
 import Error from '../components/Error'
-
+import moment from 'moment'
+import StripeCheckout from 'react-stripe-checkout'
+import Swal from 'sweetalert2'
 const Booking = ({ match }) => {
 	const [room, setRoom] = useState()
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState()
+	const [totalamount, settotalamount] = useState()
+
+	const roomid = match.params.roomid
+	const fromdate = moment(match.params.fromdate, 'DD-MM-YYYY')
+	const todate = moment(match.params.todate, 'DD-MM-YYYY')
+
+	const totaldays = moment.duration(todate.diff(fromdate)).asDays() + 1
 
 	const getaroom = async () => {
 		try {
@@ -16,6 +25,7 @@ const Booking = ({ match }) => {
 				await axios.post('/api/rooms/getroombyid', { roomid: match.params.roomid })
 			).data
 			// console.log(data)
+			settotalamount(data.rentperday * totaldays)
 			setRoom(data)
 			setLoading(false)
 		} catch (error) {
@@ -26,7 +36,35 @@ const Booking = ({ match }) => {
 	}
 	useEffect(() => {
 		getaroom()
-	}, [room])
+	}, [])
+
+	const onToken = async (token) => {
+		console.log(token)
+		const bookingDetails = {
+			room,
+			userid: JSON.parse(localStorage.getItem('currentUser'))._id,
+			fromdate,
+			todate,
+			totalamount,
+			totaldays,
+			token,
+		}
+
+		try {
+			setLoading(true)
+			const result = await axios.post('/api/bookings/bookroom', bookingDetails)
+			setLoading(false)
+			Swal.fire('Congratulations', 'Your room booked successfully', 'success').then(
+				(result) => {
+					window.location.href = '/bookings'
+				}
+			)
+		} catch (error) {
+			setLoading(false)
+			console.log(error)
+			Swal.fire('Oops', 'Something went wrong..please try again', 'error')
+		}
+	}
 
 	return (
 		<div>
@@ -45,13 +83,14 @@ const Booking = ({ match }) => {
 								<h1>Booking Details</h1>
 								<hr />
 								<p>
-									<b>Name :</b> {room.name}
+									<b>Name :</b>{' '}
+									{JSON.parse(localStorage.getItem('currentUser')).name}
 								</p>
 								<p>
-									<b>From Date :</b>
+									<b>From Date : {match.params.fromdate}</b>
 								</p>
 								<p>
-									<b>To Date :</b>
+									<b>To Date : {match.params.todate}</b>
 								</p>
 								<p>
 									<b>Max Count :</b> {room.maxcount}
@@ -62,18 +101,24 @@ const Booking = ({ match }) => {
 								<h1>Amount Details</h1>
 								<hr />
 								<p>
-									<b>Total Days :</b>
+									<b>Total Days : {totaldays}</b>
 								</p>
 								<p>
 									<b>Rent Per Day : {room.rentperday}</b>
 								</p>
 								<p>
-									<b>Total Amount :</b>
+									<b>Total Amount : {totalamount}</b>
 								</p>
 							</div>
 
 							<div>
-								<button className='btn btn-primary'>Pay Now</button>
+								<StripeCheckout
+									amount={totalamount * 100}
+									currency='USD'
+									token={onToken}
+									stripeKey='pk_test_51JbT72HOzRa38MaPzYW09tzJd1Z3i2gyvNODXU4DUhnHhVOPdDkalJjrotdvhGTVNWWLE9oKgRqN2fihMB7k2InW00CLsoTHxq'>
+									<button className='btn btn-primary'>Pay Now</button>
+								</StripeCheckout>
 							</div>
 						</div>
 					</div>

@@ -9863,6 +9863,11 @@ react-spinners@^0.11.0:
   dependencies:
     "@emotion/react" "^11.1.4"
 
+react-stripe-checkout@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/react-stripe-checkout/-/react-stripe-checkout-2.6.3.tgz#3173a870b04e5a3c321a06d24cd53c6030111c45"
+  integrity sha1-MXOocLBOWjwyGgbSTNU8YDARHEU=
+
 react-transition-group@^4.4.1:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
@@ -11151,6 +11156,11 @@ svgo@^1.0.0, svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+sweetalert2@^11.1.6:
+  version "11.1.6"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.1.6.tgz#2dfac87d14b43afdec460e74b698a7f7f9a3d9da"
+  integrity sha512-hPhdzelwZ+TeFdb6Wuq3BX8MMy09YeHFkC9tXPVmZFPInJ7TWt7FSkd9k0A5MdeNigjhH8fwvT0dsy0ZyibR4A==
 
 symbol-tree@^3.2.4:
   version "3.2.4"

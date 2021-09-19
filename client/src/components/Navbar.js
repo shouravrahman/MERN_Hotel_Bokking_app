@@ -8,7 +8,7 @@ const Navbar = () => {
 	}
 	return (
 		<div>
-			<nav className='navbar navbar-expand-lg '>
+			<nav className='navbar navbar-expand-lg'>
 				{/* <div className='container-fluid'> */}
 				<a className='navbar-brand' href='/'>
 					<span className='text-primary'>MERN</span>rooms
@@ -49,7 +49,10 @@ const Navbar = () => {
 										{user.name}
 									</button>
 									<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-										<a class='dropdown-item' href='#'>
+										<a
+											class='dropdown-item'
+											href='/bookings'
+											style={{ width: '60px' }}>
 											Bookings
 										</a>
 										<a class='dropdown-item' href='#' onClick={logout}>

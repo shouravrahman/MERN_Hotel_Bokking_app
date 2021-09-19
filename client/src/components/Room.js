@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Modal, Button, Carousel } from 'react-bootstrap'
-const Room = ({ room }) => {
+const Room = ({ room, fromdate, todate }) => {
 	const [show, setShow] = useState(false)
 
 	const handleClose = () => setShow(false)
@@ -26,9 +26,13 @@ const Room = ({ room }) => {
 
 				<div style={{ float: 'right' }}>
 					{/* //todo: pass a link */}
-					<Link to={`/book/${room._id}`}>
-						<button className='btn m-2'>Book Now</button>
-					</Link>
+
+					{fromdate && todate && (
+						<Link to={`/book/${room._id}/${fromdate}/${todate}`}>
+							<button className='btn m-2'>Book Now</button>
+						</Link>
+					)}
+
 					<button onClick={handleShow} className='btn'>
 						View Details
 					</button>
