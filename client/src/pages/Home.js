@@ -1,10 +1,11 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Room from '../components/Room'
 import Loader from '../components/Loader'
-import Error from '../components/Error'
 import 'antd/dist/antd.css'
-import { DatePicker, Space } from 'antd'
+import { DatePicker } from 'antd'
 import moment from 'moment'
 
 const Home = () => {
@@ -14,6 +15,8 @@ const Home = () => {
 	const [error, setError] = useState(false)
 	const [fromdate, setFromdate] = useState()
 	const [todate, setTodate] = useState()
+	const [searchKey, setSearchKey] = useState('')
+	const [type, setType] = useState('all')
 
 	const { RangePicker } = DatePicker
 	const getallrooms = async () => {
@@ -36,7 +39,7 @@ const Home = () => {
 	}, [])
 
 	const filterByDate = (dates) => {
-		console.log(dates)
+		// console.log(dates)
 		setFromdate(moment(dates[0]).format('DD-MM-YYYY'))
 		setTodate(moment(dates[1]).format('DD-MM-YYYY'))
 
@@ -73,19 +76,59 @@ const Home = () => {
 			setRooms(temprooms)
 		}
 	}
-
+	const filterBySearch = () => {
+		const temprooms = duplicaterooms.filter((room) =>
+			room.name.toLowerCase().includes(searchKey.toLowerCase())
+		)
+		setRooms(temprooms)
+	}
+	const filterByType = (e) => {
+		setType(e)
+		if (!e == 'all') {
+			const temprooms = duplicaterooms.filter(
+				(room) => room.name.toLowerCase() == e.toLowerCase()
+			)
+			setRooms(temprooms)
+		} else {
+			setRooms(duplicaterooms)
+		}
+	}
 	return (
 		<div className='container text-right'>
-			<div className='row mt-5'>
+			<div className='row mt-5 bs'>
 				<div className='col-md-3'>
 					<RangePicker format='DD-MM-YYYY' onChange={filterByDate} />
+				</div>
+				<div className='col-md-5'>
+					<input
+						type='text'
+						className='form-control'
+						placeholder='search rooms'
+						value={searchKey}
+						onChange={(e) => {
+							setSearchKey(e.target.value)
+						}}
+						onKeyUp={filterBySearch}
+					/>
+				</div>
+				<div className='col-md-3'>
+					<select
+						className='fom-control'
+						value={type}
+						onChange={(e) => {
+							filterByType(e.target.value)
+						}}>
+						<option value='all'>All</option>
+						<option value='delux'>Delux</option>
+						<option value='non-delux'>Non-Delux</option>
+					</select>
 				</div>
 			</div>
 
 			<div className='row justify-content-center mt-5 '>
 				{loading ? (
 					<Loader />
-				) : rooms.length > 1 ? (
+				) : (
 					rooms.map((room) => {
 						return (
 							<div className='col-md-9 my-3'>
@@ -93,8 +136,6 @@ const Home = () => {
 							</div>
 						)
 					})
-				) : (
-					<Error />
 				)}
 			</div>
 		</div>
