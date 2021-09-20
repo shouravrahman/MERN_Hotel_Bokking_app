@@ -10,7 +10,7 @@ const Navbar = () => {
 		<div>
 			<nav className='navbar navbar-expand-lg'>
 				{/* <div className='container-fluid'> */}
-				<a className='navbar-brand' href='/'>
+				<a className='navbar-brand' href='/home'>
 					<span className='text-primary'>MERN</span>rooms
 				</a>
 				<button
@@ -30,9 +30,9 @@ const Navbar = () => {
 						{user ? (
 							<>
 								{/* <h2 style={{ color: 'white' }}>{user.name}</h2> */}
-								<div class='dropdown'>
+								<div className='dropdown'>
 									<button
-										class='btn btn-secondary dropdown-toggle  text-primary'
+										className='btn btn-secondary dropdown-toggle  text-primary'
 										type='button'
 										id='dropdownMenuButton'
 										data-toggle='dropdown'
@@ -48,14 +48,16 @@ const Navbar = () => {
 										/>
 										{user.name}
 									</button>
-									<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+									<div
+										className='dropdown-menu'
+										aria-labelledby='dropdownMenuButton'>
 										<a
-											class='dropdown-item'
-											href='/bookings'
+											className='dropdown-item'
+											href='/profile'
 											style={{ width: '60px' }}>
 											Bookings
 										</a>
-										<a class='dropdown-item' href='#' onClick={logout}>
+										<a className='dropdown-item' href='#' onClick={logout}>
 											Logout
 										</a>
 									</div>

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Booking from './pages/Booking'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Profile from './pages/Profile'
 function App() {
 	return (
 		<div className='App'>
@@ -16,6 +17,7 @@ function App() {
 					<Route exact path='/book/:roomid/:fromdate/:todate' component={Booking} />
 					<Route exact path='/register' component={Register} />
 					<Route exact path='/login' component={Login} />
+					<Route exact path='/profile' component={Profile} />
 				</Switch>
 			</Router>
 		</div>

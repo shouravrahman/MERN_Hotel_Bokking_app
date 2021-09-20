@@ -84,9 +84,9 @@ const Home = () => {
 	}
 	const filterByType = (e) => {
 		setType(e)
-		if (!e == 'all') {
+		if (e !== 'all') {
 			const temprooms = duplicaterooms.filter(
-				(room) => room.name.toLowerCase() == e.toLowerCase()
+				(room) => room.type.toLowerCase() == e.toLowerCase()
 			)
 			setRooms(temprooms)
 		} else {
@@ -96,7 +96,7 @@ const Home = () => {
 	return (
 		<div className='container text-right'>
 			<div className='row mt-5 bs'>
-				<div className='col-md-3'>
+				<div className='col-md-4'>
 					<RangePicker format='DD-MM-YYYY' onChange={filterByDate} />
 				</div>
 				<div className='col-md-5'>
@@ -111,9 +111,9 @@ const Home = () => {
 						onKeyUp={filterBySearch}
 					/>
 				</div>
-				<div className='col-md-3'>
+				<div className='col-md-2'>
 					<select
-						className='fom-control'
+						className='form-control'
 						value={type}
 						onChange={(e) => {
 							filterByType(e.target.value)

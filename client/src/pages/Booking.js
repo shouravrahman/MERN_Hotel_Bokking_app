@@ -18,6 +18,10 @@ const Booking = ({ match }) => {
 	const totaldays = moment.duration(todate.diff(fromdate)).asDays() + 1
 
 	const getaroom = async () => {
+		const user = JSON.parse(localStorage.getItem('currentUser'))
+
+		if (!user) window.location.href = '/login'
+
 		try {
 			// setLoading(true)
 			// const data = await axios.get('/api/rooms/getallrooms')
