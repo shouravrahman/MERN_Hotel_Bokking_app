@@ -4,15 +4,18 @@ const moment = require('moment')
 const Booking = require('../models/booking')
 const Room = require('../models/room')
 const { v4: uuidv4 } = require('uuid')
+const { default: Bookings } = require('../../client/src/components/Bookings')
 const stripe = require('stripe')(
 	'sk_test_51JbT72HOzRa38MaPTqjEf0QBlNOjiPVXpPYHczuBlyaXHGLfJgwsSxvk2I13iHvEq8ccXC4wrEfm6VUWcmwUMFcA004CdVr3Ll'
 )
-// router.get('/', async (req, res) => {
-// 	try {
-// 	} catch (error) {
-// 		return res.status(400).json({ message: error })
-// 	}
-// })
+router.get('/getallbookings', async (req, res) => {
+	try {
+		const bookings = await Booking.find()
+		res.send(Bookings)
+	} catch (error) {
+		return res.status(400).json({ error })
+	}
+})
 router.post('/bookroom', async (req, res) => {
 	const { room, userid, fromdate, todate, totalamount, totaldays, token } = req.body
 
