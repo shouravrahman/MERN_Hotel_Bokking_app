@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import Error from '../components/Error'
 import Loader from '../components/Loader'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init()
+
 const Login = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -31,7 +35,10 @@ const Login = () => {
 	return (
 		<div>
 			{loading && <Loader />}
-			<div className='row justify-content-center mt-5'>
+			<div
+				className='row justify-content-center mt-5'
+				data-aos='zoom-in'
+				data-aos-duration='1500'>
 				<div className='col-md-5 mt-5'>
 					{error && <Error message='Invalid credentials' />}
 					<div className='bs'>

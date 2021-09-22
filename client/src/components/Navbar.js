@@ -55,7 +55,7 @@ const Navbar = () => {
 											className='dropdown-item'
 											href='/profile'
 											style={{ width: '60px' }}>
-											Bookings
+											Profile
 										</a>
 										<a className='dropdown-item' href='#' onClick={logout}>
 											Logout

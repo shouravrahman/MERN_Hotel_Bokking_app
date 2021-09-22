@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Admin from './pages/Admin'
+import Landing from './pages/Landing'
 function App() {
 	return (
 		<div className='App'>
@@ -14,6 +15,7 @@ function App() {
 
 			<Router>
 				<Switch>
+					<Route exact path='/' component={Landing} />
 					<Route exact path='/home' component={Home} />
 					<Route exact path='/book/:roomid/:fromdate/:todate' component={Booking} />
 					<Route exact path='/register' component={Register} />

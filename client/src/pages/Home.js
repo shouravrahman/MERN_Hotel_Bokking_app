@@ -7,6 +7,11 @@ import Loader from '../components/Loader'
 import 'antd/dist/antd.css'
 import { DatePicker } from 'antd'
 import moment from 'moment'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init({
+	duration: 1100,
+})
 
 const Home = () => {
 	const [rooms, setRooms] = useState([])
@@ -95,7 +100,7 @@ const Home = () => {
 	}
 	return (
 		<div className='container text-right'>
-			<div className='row mt-5 bs'>
+			<div className='row mt-5 bs' data-aos='fade-right'>
 				<div className='col-md-4'>
 					<RangePicker format='DD-MM-YYYY' onChange={filterByDate} />
 				</div>

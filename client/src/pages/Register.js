@@ -5,6 +5,10 @@ import Error from '../components/Error'
 import Loader from '../components/Loader'
 import Success from '../components/Success'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init()
+
 const Register = () => {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -56,7 +60,7 @@ const Register = () => {
 				<div className='col-md-5 mt-5'>
 					{success && <Success message='Registration completed' />}
 
-					<div className='bs'>
+					<div className='bs' data-aos='zoom-in' data-aos-duration='1500'>
 						<h1>Register</h1>
 						<input
 							type='text'

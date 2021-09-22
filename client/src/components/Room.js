@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Modal, Button, Carousel } from 'react-bootstrap'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init({
+	duration: 1100,
+})
+
 const Room = ({ room, fromdate, todate }) => {
 	const [show, setShow] = useState(false)
 
 	const handleClose = () => setShow(false)
 	const handleShow = () => setShow(true)
 	return (
-		<div className='row bs my-3  align-items-center'>
+		<div className='row bs my-3  align-items-center ' data-aos='fade-right'>
 			<div className='col-md-5 me-5'>
 				<img src={room.imageurls[0]} alt={room.name} className='smallimg ' />
 			</div>

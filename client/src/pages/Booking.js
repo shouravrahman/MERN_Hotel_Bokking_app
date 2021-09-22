@@ -5,6 +5,10 @@ import Error from '../components/Error'
 import moment from 'moment'
 import StripeCheckout from 'react-stripe-checkout'
 import Swal from 'sweetalert2'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init()
+
 const Booking = ({ match }) => {
 	const [room, setRoom] = useState()
 	const [loading, setLoading] = useState(true)
@@ -76,7 +80,11 @@ const Booking = ({ match }) => {
 				<Loader />
 			) : room ? (
 				<div className='m-5 '>
-					<div className='row justify-content-center m-5 bs '>
+					<div
+						className='row justify-content-center m-5 bs '
+						data-aos='flip-left'
+						data-aos-easing='ease-out-cubic'
+						data-aos-duration='1500'>
 						<div className='col-md-6'>
 							<h1>{room.name}</h1>
 							<img src={room.imageurls[0]} className='bigimg' alt={room.name} />

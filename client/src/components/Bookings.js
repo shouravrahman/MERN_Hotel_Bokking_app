@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Loader from '../components/Loader'
-import Error from '../components/Error'
+import Loader from './Loader'
 
 const Bookings = () => {
 	const [bookings, setbookings] = useState([])
@@ -25,7 +24,7 @@ const Bookings = () => {
 
 	return (
 		<div className='row'>
-			<div className='col-md-10'>
+			<div className='col-md-12'>
 				<h1>Bookings</h1>
 				{loading && <Loader />}
 
